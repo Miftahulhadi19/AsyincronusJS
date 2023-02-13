@@ -64,30 +64,30 @@
 // });
 
 // FETCH (REFACTOR)
-const searchButton = document.querySelector(".search-button");
-searchButton.addEventListener("click", async function () {
-  const inputKeyword = document.querySelector(".input-keyword");
+const searchButton = document.querySelector('.search-button');
+searchButton.addEventListener('click', async function () {
+  const inputKeyword = document.querySelector('.input-keyword');
   const movies = await getMovies(inputKeyword.value);
   updateUI(movies);
 });
 
 function getMovies(keyword) {
-  return fetch("http://www.omdbapi.com/?apikey=20a258b2&s=" + keyword)
+  return fetch('http://www.omdbapi.com/?apikey=20a258b2&s=' + keyword)
     .then((response) => response.json())
     .then((response) => response.Search);
 }
 
 function updateUI(movies) {
-  let cards = "";
+  let cards = '';
   movies.forEach((m) => (cards += showCards(m)));
-  const movieContainer = document.querySelector(".movie-container");
+  const movieContainer = document.querySelector('.movie-container');
   movieContainer.innerHTML = cards;
 }
 
 // ketika detail button di klik
 // Event Binding
-document.addEventListener("click", async function (e) {
-  if (e.target.classList.contains("modal-detail-button")) {
+document.addEventListener('click', async function (e) {
+  if (e.target.classList.contains('modal-detail-button')) {
     const imdbid = e.target.dataset.imdbid;
     const movieDetail = await getMovieDetail(imdbid);
     updateUiDetail(movieDetail);
@@ -95,13 +95,13 @@ document.addEventListener("click", async function (e) {
 });
 
 function getMovieDetail(imdbid) {
-  return fetch("http://www.omdbapi.com/?apikey=20a258b2&i=" + imdbid)
+  return fetch('http://www.omdbapi.com/?apikey=20a258b2&i=' + imdbid)
     .then((response) => response.json())
     .then((m) => m);
 }
 function updateUiDetail(m) {
   const movieDetail = showMovieDetail(m);
-  const modalBody = document.querySelector(".modal-body");
+  const modalBody = document.querySelector('.modal-body');
   modalBody.innerHTML = movieDetail;
 }
 

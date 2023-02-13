@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coba Async</title>
+    <!-- <script>
+      // callback
+      const addElement = () => {
+        const header = document.createElement('h1');
+        header.textContent = 'Hallo Miftahul Hadi salamat datang';
+
+        document.body.appendChild(header);
+      };
+
+      setTimeout(addElement, 2000);
+
+      let setTime = () => {
+        const header = document.getElementById('header');
+        header.textContent = new Date().toString();
+      };
+
+      setInterval(setTime, 1000);
+    </script> -->
+
+    <!-- <script>
+      function callback() {
+        console.log('Hello World');
+      }
+
+      function buttonClick() {
+        console.log('Success Click Button');
+      }
+    </script> -->
+  </head>
+  <body>
+    <h1 id="header"></h1>
+    <button class="btn">Click Me</button>
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="Callback.js"></script>
+  </body>
+</html>
