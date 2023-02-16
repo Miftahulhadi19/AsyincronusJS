@@ -36,23 +36,28 @@
 
 // const names = ['andi', 'surya', 'patino', 'narji'];
 // names.forEach((name) => console.log(name));
-const names = ['andi', 'surya', 'patino', 'narji'];
-// async function myForeach(arr, cb) {
+// const names = ['andi', 'surya', 'patino', 'narji'];
+// async function forEach(arr, cb) {
 //   for (let i = 0; i < arr.length; i++) {
 //     const element = await arr[i];
 //     cb(element);
 //   }
 // }
-// const myForeach = (arr, cb) => {
-//   arr.forEach((e) => {
-//     cb(e);
-//   });
-// };
-// console.log('1');
-// myForeach(names, (name) => {
+// console.log('satu');
+// forEach(names, (name) => {
 //   console.log(name);
 // });
-// console.log('3');
+// console.log('tiga');
+
+// const myForEach = (arr, cb) => {
+//   arr.forEach((name) => {
+//     cb(name);
+//   });
+// };
+
+// myForEach(names, (name) => {
+//   console.log(name);
+// });
 
 // const pokemon = (id, cb) => {
 //   fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -76,19 +81,6 @@ const names = ['andi', 'surya', 'patino', 'narji'];
 
 // orderPizza(PizzaReady);
 
-// function ready(name) {
-//   console.log(`eat the ${name}`);
-// }
-
-// function orderPizza(callback) {
-//   setTimeout(() => {
-//     const name = 'Pizza';
-//     callback(name);
-//   }, 2000);
-// }
-
-// orderPizza(ready);
-
 // let stock = {
 //   fruit: ['banana', 'strobary', 'coklat'],
 // };
@@ -110,3 +102,70 @@ const names = ['andi', 'surya', 'patino', 'narji'];
 //   }, 000);
 // };
 // order(0, production);
+
+// 1
+// function weatherReceive(data) {
+//   let weather = data;
+//   console.log(weather);
+// }
+
+// function getWeather(cb) {
+//   setTimeout(() => {
+//     cb('sunny');
+//   }, 2000);
+// }
+
+// getWeather(weatherReceive);
+
+// 2
+// function getWeather() {
+//   return new Promise((resolve, reject) => {
+//     resolve('sunny');
+//   });
+// }
+
+// getWeather().then(
+//   function (data) {
+//     console.log(`first result ${data}`);
+//   },
+//   function (err) {
+//     console.log(`second result ${err}`);
+//   }
+// );
+
+// 3
+
+function getWeather() {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      resolve('snaow');
+    }, 000);
+  });
+}
+
+function getWeatherStatus(weather) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      switch (weather) {
+        case 'sunny':
+          resolve('it rain');
+          break;
+        case 'snow':
+          resolve('it cold');
+          break;
+        default:
+          reject('status not found');
+      }
+    }, 2000);
+  });
+}
+
+const onSuccess = (data) => {
+  console.log(`success: ${data}`);
+};
+
+const onError = (err) => {
+  console.log(`error: ${err}`);
+};
+
+getWeather().then(getWeatherStatus).then(onSuccess, onError);
